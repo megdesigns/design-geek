@@ -4,6 +4,8 @@
 
 Design file: [Uncertainty Signal component set](https://www.figma.com/design/YqEqVIuX639b3zh9ljDinP/Research?node-id=9-32)
 
+This pattern is the deeper, public continuation of an internal AI pattern exploration carried out at CSL Behring, which covered components and states for AI interaction and remained internal.
+
 ---
 
 ## Problem
@@ -38,12 +40,16 @@ Use this pattern when all of the following hold:
 
 Four states. Each carries its meaning three times over: bar shape, text label, and colour. Remove any one of the three and the state is still legible.
 
+The encoding is ordinal and carries two separate signals. Filled bars count the evidence, and empty bars are **outlined rather than greyed**, so the difference between a filled and an unfilled bar is a shape rather than a tint. The container stroke carries the second signal: 1px solid for a settled band, 2px dashed for Low because the result is provisional, 2px solid for the terminal state. That is what separates Medium from Low at a glance rather than by saturation.
+
+High is deliberately the quietest of the four. Reliable should not read as loud, or the band becomes the overconfidence it exists to prevent.
+
 | State | Indicator | Label | Supporting explanation |
 |---|---|---|---|
-| **High confidence** | Three filled bars | High confidence | Grounded in the sources listed below. Worth a glance at the citation before you act on it. |
-| **Medium confidence** | Two filled, one empty | Medium confidence | Partly grounded. Check the specifics against a source before you rely on them. |
-| **Low confidence** | One filled, two empty | Low confidence | A starting point, not an answer. Verify every claim before you use it. |
-| **Cannot answer** | A single dash | Can't answer this | No reliable source covers this. Search the handbook directly, or ask the policy team. |
+| **High confidence** | Three filled bars, 1px solid border | High confidence | Grounded in the sources listed below. Worth a glance at the citation before you act on it. |
+| **Medium confidence** | Two filled, one outlined, 1px solid border | Medium confidence | Partly grounded. Check the specifics against a source before you rely on them. |
+| **Low confidence** | One filled, two outlined, 2px dashed border | Low confidence | A starting point, not an answer. Verify every claim before you use it. |
+| **Cannot answer** | A single dash, no bars, 2px solid border | Can't answer this | No reliable source covers this. Search the handbook directly, or ask the policy team. |
 
 ### High confidence
 
@@ -59,11 +65,18 @@ Plausible but unverified. Consider showing two or three alternatives rather than
 
 ### Cannot answer
 
-No grounded answer exists. Three things make this state work:
+**A designed terminal state, not a fourth confidence band.** It is built differently on purpose, and the difference is structural rather than decorative:
 
-1. It is a designed state, not an error. The system is behaving correctly.
-2. It names a next step, and that step is a real control, not a sentence. Apple's guidance on limitations is to explain why the inferior result occurred so the person can adjust; the Guidebook's framing is that no error should ever be a dead end.
-3. It is not a softer Low. Downgrading "I cannot answer" into "low confidence, here is a guess" is the single most damaging substitution in this pattern, because it converts an honest limit into a plausible fabrication.
+- **Layout changes.** The three bands are horizontal, indicator beside text. This one is vertical: heading, explanation, then the control. The silhouette differs before a single word is read.
+- **The bars are gone.** Bars count evidence. There is no evidence to count, so showing one lit bar would imply a weak answer exists.
+- **It carries a real control**, an instance of the Primary action, not a sentence suggesting what to do. On mobile that control is full width at 48px.
+- **The border is 2px solid**, matching Low in weight but not in treatment, so it reads as decided rather than provisional.
+
+Three rules keep it honest:
+
+1. It is a designed state, not an error. The system is behaving correctly and the UI should not apologise.
+2. It must name what is missing, specifically. "No reliable source covers this" is the content, not the framing.
+3. **It is not a softer Low.** Downgrading "I cannot answer" into "low confidence, here is a guess" is the single most damaging substitution in this pattern, because it converts an honest limit into a plausible fabrication.
 
 ---
 
@@ -94,9 +107,44 @@ No grounded answer exists. Three things make this state work:
 
 ## Platforms
 
-The component set carries a `Platform` property with `Web` and `Mobile`. The four bands, their thresholds and their announced strings are identical. On mobile the block is 340px rather than 420px, the label and explanation step up from 14 and 13 to 15 and 14, and the explanation is cut to a single line.
+The component set carries a `Platform` property with `Web` and `Mobile`. The four states, their thresholds and their announced strings are identical across both.
 
-The explanation earns less room on mobile, not smaller type. A signal that is harder to read than the output it qualifies has inverted its own purpose.
+| | Web | Mobile |
+|---|---|---|
+| Block width | 420 | 358 |
+| Label / explanation | 15 / 13 | 15 / 14 |
+| Bar size | 4 x 8/13/18 | unchanged |
+| Terminal control | inline, 37px | full width, 48px |
+
+**The explanation earns less room on mobile, not smaller type.** A signal that is harder to read than the output it qualifies has inverted its own purpose, so the explanation text steps up from 13 to 14 while the sentence itself gets shorter.
+
+**The bars do not shrink.** They are the non-colour carrier of the state, and they are already near the floor of what reads reliably at 4px wide.
+
+**Nothing truncates.** Every text node fills its container and grows in height, so a longer string wraps rather than clipping. There is no ellipsis anywhere in this pattern, because a clipped uncertainty signal is a wrong uncertainty signal.
+
+358px is the block width inside a 390px viewport with 16px gutters.
+
+---
+
+## Tokens
+
+Every state resolves to the same four colour roles plus a stroke width. Later patterns reuse this set rather than inventing their own, which is why the roles are named by function and not by hue.
+
+| State | Colour tokens | Stroke | Bars |
+|---|---|---|---|
+| High | `color/confidence/high/{fg, bg, border, bar}` | `border/width/default`, solid | 3 filled |
+| Medium | `color/confidence/medium/{fg, bg, border, bar}` | `border/width/default`, solid | 2 filled, 1 outlined |
+| Low | `color/confidence/low/{fg, bg, border, bar}` | `border/width/emphasis`, dashed | 1 filled, 2 outlined |
+| Cannot answer | `color/confidence/unknown/{fg, bg, border, bar}` | `border/width/emphasis`, solid | none |
+
+Shared by all four: `color/track/empty` for the outlined bar strokes, `color/text/secondary` for the explanation line.
+
+Two deliberate choices in the token model:
+
+- **`bar` is its own role**, aliased to the same primitive as `fg`. Today a bar and its label are the same colour. Keeping them separate means bar treatment can diverge later without editing a component.
+- **`unknown` is not a confidence level.** It is named for what it is rather than extending the high/medium/low scale, so nobody is tempted to order it beneath Low.
+
+The dash pattern on Low is set on the component rather than tokenised, because Figma has no variable type for it. That is a known gap, noted here so it is a decision rather than an oversight.
 
 ---
 
@@ -164,6 +212,10 @@ N-best alternatives in place of one hedged answer.
 - [ ] The mapping from model output to band is documented and verified against result quality.
 - [ ] Each band states the behaviour it recommends, in product language.
 - [ ] Bar shape and text label both carry the state; removing colour loses nothing.
+- [ ] Medium and Low differ by more than saturation: bar count and stroke treatment both change.
+- [ ] Empty bars are outlined, not greyed, so filled and unfilled differ in shape.
+- [ ] Cannot answer uses a different layout and carries a real control, not a sentence.
+- [ ] Every state binds the four confidence roles; no hardcoded colour values in the component.
 - [ ] Label text meets 4.5:1, bars meet 3:1.
 - [ ] A screen reader announces the band before the content it describes.
 - [ ] Streaming output announces the band once, at completion.
