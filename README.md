@@ -1,39 +1,37 @@
-# Human AI Patterns
+# AI Interaction Pattern Library
 
-**An open library of interaction patterns for AI interfaces**, built around a question most AI UI skips: how does someone decide what to trust, and what do they do when it is wrong?
+Patterns for designing AI interfaces that people can trust, steer, and recover from.
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-111.svg)](LICENSE)
 [![Patterns](https://img.shields.io/badge/patterns-4-111.svg)](patterns/)
 [![Principles](https://img.shields.io/badge/principles-6-111.svg)](principles.md)
 
+This library focuses on the harder problems of AI interaction: making uncertainty visible and actionable, preserving user control and reversibility, designing for graceful failure and manual fallbacks, providing provenance without overload, and ensuring accessibility. It is deliberately grounded in Apple's Human Interface Guidelines (Generative AI and Machine Learning) and Google's People + AI Guidebook.
+
 ![AI-assisted document review, showing an uncertainty band, claim-level provenance and an approval step](docs/images/screen-web-document-review.png)
 
----
-
-## ▶ Open the component library in Figma
+## Open the component library in Figma
 
 **[AI Interaction Pattern Library · Figma file](https://www.figma.com/design/YqEqVIuX639b3zh9ljDinP/Research)**
 
 Every pattern here is a built component set with Web and Mobile variants, bound tokens, published text styles, and a documentation panel beside it. The file also holds six validation screens showing the patterns inside real product surfaces.
 
-| | |
-|---|---|
-| [**Principles**](principles.md) | The six principles, each with do/don't guidance and falsifiable acceptance criteria |
-| [**Patterns**](patterns/) | The catalog, one file per pattern |
-| [**Reviewer's short list**](principles.md#reviewers-short-list) | Thirteen questions to run against any screen |
-| [**Use it with Claude**](claude/) | The principles as working instructions for an AI assistant |
+## Background
 
----
+At CSL Behring I independently explored an AI design system and pattern library covering components and states for AI interaction patterns. I presented the work to the team. It remained internal.
 
-## What this is
+This library is the next step: a more rigorous, public set of principles and patterns that others can use and build on.
 
-Most AI interface work is a thin layer over a model's output. This library is the opposite starting point. It begins with the harder problems, which are uncertainty, control, failure and accessibility, and works back to the components.
+Built by **Marian Gasinu**, a product designer working on AI interfaces. Portfolio at [mariangasinu.com](https://mariangasinu.com). This repository contains no CSL Behring material, data, or proprietary work. It is an independent project, written from published guidance and built from scratch.
 
-Two things live here. [**principles.md**](principles.md) is the governing document, six principles with acceptance criteria a reviewer can check. **patterns/** holds the patterns, each one declaring which principles it serves and how.
+## Contents
 
-Nothing in here is a mood board. Every pattern states when not to use it, what it costs, and what has to be true for it to work.
+- [Principles](principles.md) covers six principles with do/don't guidance and acceptance criteria
+- [Patterns](patterns/) covers Uncertainty Signaling, Graceful Failure & Manual Fallback, User Control & Reversibility, Provenance / Source Display
+- [Claude skill](claude/) holds instructions for using the principles when generating UI
+- [Reviewer's short list](principles.md#reviewers-short-list) is thirteen questions to run against any screen
 
----
+Figma components and validation screens (web, mobile, robotics, vehicle, industrial) are available in the linked Figma file.
 
 ## The components
 
@@ -53,9 +51,7 @@ Nothing in here is a mood board. Every pattern states when not to use it, what i
 
 ![Source Display component set, sourced, expanded, partially sourced and no source](docs/images/component-source-display.png)
 
----
-
-## Proof it works in real interfaces
+## Validation screens
 
 Six composed screens, each built from instances of the real component sets rather than redrawn for the picture. Frames are at true device sizes.
 
@@ -65,15 +61,23 @@ Six composed screens, each built from instances of the real component sets rathe
 | **iPhone 17 Pro** · sourced answer | **iPhone 17 Pro** · cannot answer |
 
 ![Robotics fleet supervisor with a low-confidence advisory and a lost-contact failure](docs/images/screen-robotics.png)
-**MacBook Pro 14″** · robotics operations. An inferred obstruction is marked low confidence, a lost link hands back manual control, and dispatch states it cannot be recalled.
+**MacBook Pro 14 inch** · robotics operations. An inferred obstruction is marked low confidence, a lost link hands back manual control, and dispatch states it cannot be recalled.
 
 ![In-vehicle driver assistance screen handing control back under poor visibility](docs/images/screen-vehicle.png)
 **In-dash display** · driver assistance. Standing water degrades lane detection, so the system says what it cannot see and hands back the wheel.
 
 ![Industrial process supervisor with a frozen advisory after a sensor dropout](docs/images/screen-industrial.png)
-**MacBook Pro 14″** · industrial control. A drifting sensor makes the advisory low confidence; when it drops out entirely the advisory freezes and the interlock holds.
+**MacBook Pro 14 inch** · industrial control. A drifting sensor makes the advisory low confidence; when it drops out entirely the advisory freezes and the interlock holds.
 
----
+## Using the library
+
+Start with the principles. Each pattern document maps to specific principles, includes when-to-use guidance, accessibility notes, and acceptance criteria. The Figma file contains the component sets and composed examples.
+
+**Designing something.** Find the pattern, read its "when not to use" section before its variants. Most mistakes in AI UI are a pattern applied where it does not belong, not a pattern built badly.
+
+**Reviewing something.** Run the [reviewer's short list](principles.md#reviewers-short-list), then the acceptance criteria on whichever patterns the screen uses. Both are written as checks rather than opinions, so a review produces a pass or a fail rather than a discussion.
+
+**Contributing a pattern.** See [patterns/README.md](patterns/README.md) for the required structure. A pattern names the principles it serves and does not violate any of them. Where a pattern genuinely pulls against a principle, that tension belongs in the write-up rather than hidden in it.
 
 ## Index: principles to patterns
 
@@ -89,8 +93,6 @@ Every pattern serves at least one principle. Every principle should eventually h
 | [6. Avoid generic AI slop](principles.md#6-avoid-generic-ai-slop) | [User Control & Reversibility](patterns/user-control.md) · [Provenance / Source Display](patterns/provenance.md) · [Graceful Failure & Manual Fallback](patterns/graceful-failure.md) · [Uncertainty Signaling](patterns/uncertainty-signaling.md) |
 
 Accessibility is deliberately not a pattern of its own. It is a constraint every pattern carries, so each one has its own accessibility section rather than deferring to a shared page nobody reads.
-
----
 
 ## Structure
 
@@ -109,37 +111,11 @@ human-ai-patterns/
 └── docs/images/          Component and validation screenshots used above.
 ```
 
----
-
-## How to use it
-
-**Designing something.** Find the pattern, read its "when not to use" section before its variants. Most mistakes in AI UI are a pattern applied where it does not belong, not a pattern built badly.
-
-**Reviewing something.** Run the [reviewer's short list](principles.md#reviewers-short-list), then the acceptance criteria on whichever patterns the screen uses. Both are written as checks rather than opinions, so a review produces a pass or a fail rather than a discussion.
-
-**Contributing a pattern.** See [patterns/README.md](patterns/README.md) for the required structure. The rule is that a pattern names the principles it serves and does not violate any of them. Where a pattern genuinely pulls against a principle, that tension belongs in the write-up rather than hidden in it.
-
----
-
-## Who made this
-
-Built by **Marian Gasinu**, a product designer working on AI interfaces. Portfolio at [mariangasinu.com](https://mariangasinu.com).
-
-At CSL Behring I independently explored an AI design system and pattern library, covering components and states for AI interaction patterns, and presented the work to the team. It remained internal.
-
-That exploration made the gap visible. The hard problems in AI interface design are not the components themselves but uncertainty, control, graceful failure and accessibility, and those were the parts it only began to reach. This library is the deliberate next step: scoped to go deeper on exactly those four, held to acceptance criteria rather than opinion, and public so the work is usable outside one organisation.
-
-This repository contains no CSL Behring material, data, or proprietary work. It is an independent project, written from published guidance and built from scratch.
-
----
-
 ## Grounding
 
 The principles are grounded in [Apple's Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/generative-ai) for generative AI and machine learning, and [Google's People + AI Guidebook](https://pair.withgoogle.com/guidebook/). Each document cites what came from where, and says explicitly where a source does not cover something.
 
 The People + AI Guidebook is licensed CC BY-NC-SA 4.0. Material from it is paraphrased with attribution rather than reproduced. Apple's guidelines are cited by reference only.
-
----
 
 ## License
 
