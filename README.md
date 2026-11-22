@@ -15,6 +15,7 @@ Two things live here. [**principles.md**](principles.md) is the governing docume
 | [**Principles**](principles.md) | The six principles, each with do/don't guidance and falsifiable acceptance criteria |
 | [**Patterns**](patterns/) | The catalog, one file per pattern |
 | [**Reviewer's short list**](principles.md#reviewers-short-list) | Thirteen questions to run against any screen |
+| [**Use it with Claude**](claude/) | The principles as working instructions for an AI assistant |
 
 ---
 
@@ -41,9 +42,13 @@ Accessibility is deliberately not a pattern of its own. It is a constraint every
 design-geek/
 ├── README.md             You are here. Overview and the principle-to-pattern index.
 ├── principles.md         The six principles. Changes slowly.
-└── patterns/
-    ├── README.md         Pattern catalog and the contribution shape.
-    └── *.md              One file per pattern.
+├── patterns/
+│   ├── README.md         Pattern catalog and the contribution shape.
+│   └── *.md              One file per pattern.
+└── claude/
+    ├── README.md         How to load the instructions, three ways.
+    └── ai-interface-design/
+        └── SKILL.md      The principles as an assistant instruction.
 ```
 
 ---
