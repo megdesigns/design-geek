@@ -25,11 +25,11 @@ Every pattern serves at least one principle. Every principle should eventually h
 | Principle | Patterns |
 |---|---|
 | [1. Make uncertainty visible and actionable](principles.md#1-make-uncertainty-visible-and-actionable) | [Uncertainty Signaling](patterns/uncertainty-signaling.md) |
-| [2. Preserve control and reversibility](principles.md#2-preserve-control-and-reversibility) | None yet |
-| [3. Design for graceful failure and a manual path](principles.md#3-design-for-graceful-failure-and-a-manual-path) | [Uncertainty Signaling](patterns/uncertainty-signaling.md) (cannot-answer state) |
+| [2. Preserve control and reversibility](principles.md#2-preserve-control-and-reversibility) | [Graceful Failure & Manual Fallback](patterns/graceful-failure.md) (action hierarchy, cancel) |
+| [3. Design for graceful failure and a manual path](principles.md#3-design-for-graceful-failure-and-a-manual-path) | [Graceful Failure & Manual Fallback](patterns/graceful-failure.md) · [Uncertainty Signaling](patterns/uncertainty-signaling.md) (cannot-answer state) |
 | [4. Provide provenance without overload](principles.md#4-provide-provenance-without-overload) | None yet |
-| [5. Build for accessibility](principles.md#5-build-for-accessibility) | [Uncertainty Signaling](patterns/uncertainty-signaling.md) |
-| [6. Avoid generic AI slop](principles.md#6-avoid-generic-ai-slop) | [Uncertainty Signaling](patterns/uncertainty-signaling.md) |
+| [5. Build for accessibility](principles.md#5-build-for-accessibility) | [Graceful Failure & Manual Fallback](patterns/graceful-failure.md) · [Uncertainty Signaling](patterns/uncertainty-signaling.md) |
+| [6. Avoid generic AI slop](principles.md#6-avoid-generic-ai-slop) | [Graceful Failure & Manual Fallback](patterns/graceful-failure.md) · [Uncertainty Signaling](patterns/uncertainty-signaling.md) |
 
 Accessibility is deliberately not a pattern of its own. It is a constraint every pattern carries, so each one has its own accessibility section rather than deferring to a shared page nobody reads.
 
