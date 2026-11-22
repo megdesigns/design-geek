@@ -2,9 +2,17 @@
 
 **AI Interaction Pattern Library.** A shared vocabulary for designing AI interfaces that people can trust, steer, and recover from.
 
-Six principles. Each one states the rule, says why it holds, gives concrete do/don't guidance, names the patterns it implies, and ends with acceptance criteria a reviewer can actually check.
+Six principles. Each one states the rule, says why it holds, gives concrete do/don't guidance, names the patterns it implies, and ends with acceptance criteria a reviewer can check.
 
 Grounded in [Apple Human Interface Guidelines: Generative AI](https://developer.apple.com/design/human-interface-guidelines/generative-ai) and [Machine learning](https://developer.apple.com/design/human-interface-guidelines/machine-learning), and Google's [People + AI Guidebook](https://pair.withgoogle.com/guidebook/). See [Sources](#sources).
+
+---
+
+## Background & Continuity
+
+At CSL Behring I independently explored an AI design system and pattern library, covering components and states for AI interaction patterns, and presented the work to the team. It remained internal.
+
+That exploration made the gap visible. The hard problems in AI interface design are not the components themselves but uncertainty, control, graceful failure and accessibility, and those were the parts it only began to reach. This library is the deliberate next step: scoped to go deeper on exactly those four, held to acceptance criteria rather than opinion, and public so the work is usable outside one organisation.
 
 ---
 
@@ -14,7 +22,7 @@ Grounded in [Apple Human Interface Guidelines: Generative AI](https://developer.
 - **Reviewing a design?** Run the acceptance criteria. They are written as falsifiable checks, not as sentiments.
 - **Principles conflict.** Provenance versus restraint, automation versus control. When they do, say which one you chose and why. Resolution is a design decision worth recording.
 
-**Scope.** These principles cover the *interface*: what the person sees, decides, and undoes. Model quality, evaluation, dataset sourcing, and fairness auditing are upstream and out of scope here, though they constrain what the interface can honestly claim.
+**Layer.** These principles cover the *interface*: what the person sees, decides, and undoes. Model quality, evaluation, dataset sourcing, and fairness auditing are upstream and out of scope here, though they constrain what the interface can honestly claim.
 
 ---
 
@@ -303,6 +311,16 @@ Thirteen questions. A pattern or screen that cannot answer them is not ready.
 11. Is time-sensitive output stamped with its as-of time?
 12. Does a screen reader convey the AI label and the uncertainty state?
 13. Would someone who has never seen this product know what it can't do?
+
+---
+
+## Scope and applicability
+
+**Primary deliverables are screen-based.** The patterns here are visual patterns and components for screens: web, mobile, tablet, and embedded displays. That is where they are specified closely enough to build from, and where the acceptance criteria can be checked directly against a running interface.
+
+**The principles transfer; the patterns need translation.** Uncertainty signaling, control and reversibility, and graceful failure with a manual fallback are not properties of screens. They apply wherever a system acts on someone's behalf under uncertainty: robotics, voice interfaces, AR and VR, automotive, industrial controls. What changes is the channel, not the obligation. A confidence band with no visual surface becomes a matter of wording and prosody. A manual fallback in a vehicle or on a factory floor is a physical handover, and the Guidebook's warning that returning control can itself be risky carries far more weight there than it does in a text field.
+
+**This is not an HMI or robotics toolkit.** It does not cover safety certification, control theory, latency budgets for physical actuation, or the regulatory work those domains require. What it offers is the shared vocabulary and the screen patterns, specified closely enough to be adapted rather than guessed at.
 
 ---
 
