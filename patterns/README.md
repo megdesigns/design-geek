@@ -10,6 +10,8 @@ One file per pattern. Each one is a self-contained answer to a recurring problem
 |---|---|---|
 | [Uncertainty Signaling](uncertainty-signaling.md) | A model returns everything in the same confident register, so a grounded answer and a guess look identical | 1, 3, 5, 6 |
 | [Graceful Failure & Manual Fallback](graceful-failure.md) | AI failure is designed last, so every model limitation becomes a product limitation with no way out | 3, 2, 5, 6 |
+| [User Control & Reversibility](user-control.md) | Generated output arrives as a finished object, so the only choices are accept or discard, and agents act before anyone consents | 2, 3, 5, 6 |
+| [Provenance / Source Display](provenance.md) | Sources are either absent, so nothing can be checked, or piled on until people skip them | 4, 1, 5, 6 |
 
 ---
 
@@ -19,9 +21,6 @@ Not built yet. Listed so the gaps are visible rather than implied.
 
 | Pattern | Problem it would solve | Principles |
 |---|---|---|
-| Approval step | Consequential and irreversible actions committed without the person seeing the scope first | 2 |
-| Inline citation | Sources attached to the response rather than to the claims they support | 4 |
-| Editable output | Generated content delivered read-only, so correcting it means leaving the interface | 2 |
 | Context correction | Output that is right in general but wrong for this person or moment, which the system cannot detect | 3, 2, 4 |
 
 ---
