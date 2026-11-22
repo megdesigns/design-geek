@@ -2,7 +2,7 @@
 
 [`ai-interface-design/SKILL.md`](ai-interface-design/SKILL.md) turns the principles in this repo into working instructions for an AI assistant. It is one file, usable three ways.
 
-It encodes the four requirements (uncertainty signaling, control and reversibility, graceful failure with a manual path, provenance), a required state inventory, an explicit reject list, the grounding in Apple HIG and the People + AI Guidebook, and a fixed output format covering component, states, accessibility, rationale and Figma steps.
+It is a rule set rather than a method. Two groups of hard rules, one covering AI interaction (qualitative bands instead of percentages, triple encoding, cannot-answer as a designed terminal state, user control, provenance, a real manual path) and one covering visual craft and UX (restrained palette, type and spacing, 4.5:1 contrast, 44px touch targets, no decorative AI styling). Below those, the four patterns to reach for, and an output rule telling it to apply all of this without being asked.
 
 ---
 
@@ -41,16 +41,17 @@ Paste the file into a conversation ahead of the request. Fine for a single compo
 
 ## What good output looks like
 
-A request like "design the state where our assistant cannot answer a policy question" should come back with a named component, the full state inventory with non-applicable states justified, real copy rather than placeholders, an announcement and focus strategy, two or three cited decisions, and Figma steps naming variant properties and tokens.
+A request like "design the state where our assistant cannot answer a policy question" should come back with a cannot-answer state that carries a next-step control rather than an apology, a confidence treatment readable without colour, a manual path that is not a retry button, and no percentage anywhere on the screen.
 
-If it comes back with a happy path, a spinner, and "Error: something went wrong", the instructions are not loaded.
+If it comes back with "72% confident" set on a violet gradient, the instructions are not loaded.
 
 ---
 
 ## Tuning it
 
-- **Add your own tokens.** Replace the generic token roles in the Figma section with your real variable names and it will stop inventing them.
-- **Keep the reject list current.** It is the part that ages fastest, because the visual tells of generic AI output move every few months.
+- **Name your palette.** "Restrained palette" and "accent colour only for meaning" are the two rules most likely to be interpreted loosely. Replace them with your actual neutrals and your one accent, and the guesswork stops.
+- **Keep the visual reject list current.** The line banning gradients, sparkles and decorative AI language is the part that ages fastest, because the visual tells of generic AI output move every few months.
 - **Point it at your patterns.** Once [`patterns/`](../patterns/) covers more ground, add a line telling it to check there before designing from scratch.
+- **Say what a consequential action is in your product.** The control rule turns on that phrase, and sending, paying, deleting and publishing are not the same bar in every product.
 
-A note on scope: these instructions assume screen-based interfaces. The requirements transfer to voice, AR and VR, automotive and industrial contexts, but the state inventory and the Figma section both assume a screen. See [Scope and applicability](../principles.md#scope-and-applicability).
+A note on scope: these instructions assume screen-based interfaces. The requirements transfer to voice, AR and VR, automotive and industrial contexts, but the touch target, contrast and layout rules all assume a screen. See [Scope and applicability](../principles.md#scope-and-applicability).
