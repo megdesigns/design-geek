@@ -40,16 +40,16 @@ Use this pattern when all of the following hold:
 
 Four states. Each carries its meaning three times over: bar shape, text label, and colour. Remove any one of the three and the state is still legible.
 
-The encoding is ordinal and carries two separate signals. Filled bars count the evidence, and empty bars are **outlined rather than greyed**, so the difference between a filled and an unfilled bar is a shape rather than a tint. The container stroke carries the second signal: 1px solid for a settled band, 2px dashed for Low because the result is provisional, 2px solid for the terminal state. That is what separates Medium from Low at a glance rather than by saturation.
+The encoding is ordinal and carries three separate signals. Filled bars count the evidence, and empty bars are **outlined rather than greyed**, so the difference between a filled and an unfilled bar is a shape rather than a tint. The container stroke carries the second signal: 1px solid for a settled band, 2px dashed for Low because the result is provisional, 2px solid for the terminal state. A 3px rail on the leading edge, coloured by state, carries the third. The rail is the fastest of the three to read at a distance, and it is what separates Medium from Low at a glance rather than saturation.
 
 High is deliberately the quietest of the four. Reliable should not read as loud, or the band becomes the overconfidence it exists to prevent.
 
 | State | Indicator | Label | Supporting explanation |
 |---|---|---|---|
-| **High confidence** | Three filled bars, 1px solid border | High confidence | Grounded in the sources listed below. Worth a glance at the citation before you act on it. |
-| **Medium confidence** | Two filled, one outlined, 1px solid border | Medium confidence | Partly grounded. Check the specifics against a source before you rely on them. |
-| **Low confidence** | One filled, two outlined, 2px dashed border | Low confidence | A starting point, not an answer. Verify every claim before you use it. |
-| **Cannot answer** | A single dash, no bars, 2px solid border | Can't answer this | No reliable source covers this. Search the handbook directly, or ask the policy team. |
+| **High confidence** | Three filled bars, 1px solid border, state rail | High confidence | Grounded in the sources listed below. Worth a glance at the citation before you act on it. |
+| **Medium confidence** | Two filled, one outlined, 1px solid border, state rail | Medium confidence | Partly grounded. Check the specifics against a source before you rely on them. |
+| **Low confidence** | One filled, two outlined, 2px dashed border, state rail | Low confidence | A starting point, not an answer. Verify every claim before you use it. |
+| **Cannot answer** | A single dash, no bars, 2px solid border, state rail | Can't answer this | No reliable source covers this. Search the handbook directly, or ask the policy team. |
 
 ### High confidence
 
@@ -113,7 +113,7 @@ The component set carries a `Platform` property with `Web` and `Mobile`. The fou
 |---|---|---|
 | Block width | 420 | 358 |
 | Label / explanation | 15 / 13 | 15 / 14 |
-| Bar size | 4 x 8/13/18 | unchanged |
+| Bar size | 3.5 x 7/11/15 | unchanged |
 | Terminal control | inline, 37px | full width, 48px |
 
 **The explanation earns less room on mobile, not smaller type.** A signal that is harder to read than the output it qualifies has inverted its own purpose, so the explanation text steps up from 13 to 14 while the sentence itself gets shorter.

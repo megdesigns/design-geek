@@ -17,6 +17,8 @@ Two things live here. [**principles.md**](principles.md) is the governing docume
 | [**Reviewer's short list**](principles.md#reviewers-short-list) | Thirteen questions to run against any screen |
 | [**Use it with Claude**](claude/) | The principles as working instructions for an AI assistant |
 
+The Figma file also carries a **Validation** section: three composed screens (a web document review, a mobile assistant, and a robotics fleet supervisor) built from instances of the real component sets rather than redrawn, so the patterns are shown working inside product surfaces rather than on their own.
+
 ---
 
 ## Index: principles to patterns
