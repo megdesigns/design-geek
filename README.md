@@ -145,4 +145,6 @@ The People + AI Guidebook is licensed CC BY-NC-SA 4.0. Material from it is parap
 
 [Creative Commons Attribution 4.0 International](LICENSE). Use it, adapt it, build on it commercially. Credit it and link back.
 
+Third-party material, including the People + AI Guidebook this library cites, is covered in [NOTICE.md](NOTICE.md).
+
 If you ship something with these patterns in it, I would like to hear about it.
