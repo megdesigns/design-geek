@@ -59,6 +59,8 @@ Both count the scope, itemise it, and repeat the count in the primary label: `Ap
 
 Confirm states the absence of undo in words. It does not imply safety through tone and it does not rely on a red tint to carry the warning.
 
+Reversibility is a chip, not a sentence. `Undoable for 30 days` or `No undo` sits as a small bordered pill under the scope list, so the single most important fact about the action is scannable rather than buried in a line of prose. The chip carries a dot and a text label, so it survives colour removal.
+
 ---
 
 ## When an approval step is required
