@@ -109,7 +109,7 @@ The Guidebook's framing of returning control is worth keeping in view: the perso
 
 **Every route out is a real control.** Primary, secondary and link are all buttons or links, reachable in reading order in that order, with visible focus. A link styled as body text fails this, as does an action that only appears on hover.
 
-**Colour is not the signal.** Each state carries a distinct glyph, a distinct headline and a state rail on the leading edge. Error is not red-only, offline is not grey-only. Remove colour entirely and the four states stay distinguishable.
+**Colour is not the signal.** Each state carries a distinct glyph in a filled tile, plus a distinct headline. Error is not red-only, offline is not grey-only. Remove colour entirely and the four states stay distinguishable.
 
 **Contrast.** Headline text meets 4.5:1 on its tint. Glyphs meet 3:1 as meaningful graphics. The secondary action border meets 3:1, so the control boundary survives forced-colours mode.
 
@@ -125,7 +125,7 @@ Both component sets carry a `Platform` property with `Web` and `Mobile`. The sta
 
 | | Web | Mobile |
 |---|---|---|
-| Block width | 560 | 360 |
+| Block width | 560 | 370 |
 | Actions | A row, primary first | A full width stack in priority order |
 | Touch target | 37px | 48px |
 | Body / headline type | 14 / 16 | 15 / 17 |
