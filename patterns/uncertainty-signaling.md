@@ -92,6 +92,14 @@ No grounded answer exists. Three things make this state work:
 
 ---
 
+## Platforms
+
+The component set carries a `Platform` property with `Web` and `Mobile`. The four bands, their thresholds and their announced strings are identical. On mobile the block is 340px rather than 420px, the label and explanation step up from 14 and 13 to 15 and 14, and the explanation is cut to a single line.
+
+The explanation earns less room on mobile, not smaller type. A signal that is harder to read than the output it qualifies has inverted its own purpose.
+
+---
+
 ## Why bands and not percentages
 
 Google's People + AI Guidebook puts the question directly: what is someone supposed to do differently at 85.8% certain versus 87% certain? It calls numeric indicators risky because they presume an understanding of probability, and observes that a 97% match reads as a failure to anyone expecting 100%.

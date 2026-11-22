@@ -119,6 +119,27 @@ The Guidebook's framing of returning control is worth keeping in view: the perso
 
 ---
 
+## Platforms
+
+Both component sets carry a `Platform` property with `Web` and `Mobile`. The states and their meaning are identical across platforms. Four things change.
+
+| | Web | Mobile |
+|---|---|---|
+| Block width | 560 | 360 |
+| Actions | A row, primary first | A full width stack in priority order |
+| Touch target | 37px | 48px |
+| Body / headline type | 14 / 16 | 15 / 17 |
+
+**Actions stack rather than wrap.** A wrapped row puts the secondary action above the primary as often as not. Stacking in priority order keeps the manual route as the first thing the thumb reaches.
+
+**Type goes up, not down.** The common instinct is to shrink text on small screens. Reading distance does not shrink with the viewport, so the opposite is correct.
+
+**Explanation copy is cut, not truncated.** At 360px the explanation competes with the output it describes. What survives is the limit and the route; the elaboration goes. No ellipsis, no "show more", nothing hidden behind a tap that was visible on web.
+
+**Touch targets are 48px**, above the 44px WCAG 2.2 AA target-size minimum, because a failure state is where people tap in a hurry.
+
+---
+
 ## Implementation notes
 
 **Markup shape.** A `role="status"` container holding a heading, a paragraph, and an action group. `role="alert"` is wrong for most of these: alert is assertive and interrupts, which suits a genuine error but not low confidence, empty, or offline. Reserve assertive for the case where acting on stale output would cause harm.
@@ -137,7 +158,7 @@ The Guidebook's framing of returning control is worth keeping in view: the perso
 
 **Error taxonomy in code.** Map transport failures, model refusals, empty results and low-confidence results to separate states at the boundary, not in the view. Collapsing them into one catch block is how every failure ends up saying "something went wrong."
 
-**Component API.** In the design file the pattern is two component sets. `Fallback Block` takes a `State` property with four values. `Output State` takes a `State` property with three. Both compose instances of an `Action` component whose `Kind` is Primary, Secondary or Link, so the one-primary rule is visible in the structure rather than written in a comment.
+**Component API.** In the design file the pattern is two component sets. `Fallback Block` takes a `State` property with four values. `Output State` takes a `State` property with three. Both compose instances of an `Action` component whose `Kind` is Primary, Secondary or Link, so the one-primary rule is visible in the structure rather than written in a comment. All three sets also carry a `Platform` property, so the web and mobile layouts are one component rather than two that drift apart.
 
 ---
 
